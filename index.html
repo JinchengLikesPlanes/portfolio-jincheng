@@ -23,13 +23,47 @@
             background: var(--bg);
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem 2rem 2rem;
         }
 
+        
+
         header {
+            /**
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+
+            /* ENSURE HEADER HAS NO TOP SPACING */
+            /**
+            margin-top: 0;
+            padding-top: 0;
+
             margin-bottom: 3rem;
-            border-bottom: 2px solid var(--card-bg);
             padding-bottom: 1rem;
+            background: var(--bg);
+            z-index: 10;
+            **/
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            
+            /* Background Image setup */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                            url('landing_page_banner.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            /* Spacing and Alignment */
+            margin: 0 auto 3rem auto;
+            padding: 3rem 2rem 2rem 2rem; /* More top padding to center text vertically */
+            text-align: center;
+            
+            /* Stretch to edges */
+            margin-left: -2rem;
+            width: calc(100% + 4rem);
         }
 
         h1 { margin: 0; font-size: 2.5rem; }
@@ -99,6 +133,7 @@
     <style type = "text/css">
         .landing_banner {
             width: 100%;
+            margin-top:0;
             height: 100%;
             object-fit: cover;
         }
@@ -112,9 +147,6 @@
 <body>
 
     <header>
-        <div class ="baner">
-            <img class = "landing_banner" src = "landing_page_banner.png">
-        </div>
 
         <h1>Welcome to My Page! | Jincheng</h1>
         <p class="subtitle">Engineering Science Student at the University of Toronto</p>
@@ -142,8 +174,11 @@
     <section id="about">
         <h2>About Me</h2>
         <p>
-            I am currently a first year student at the University of Toronto in the <strong>Engineering Science</strong> program. My dream is to work in the aerospace industry, something I have been deeply passionate about for a while.
-            I created this website to show you a deep dive into who I am as a person.
+            Hello! My name is Jincheng and I am currently a first year student at the University of Toronto in the <strong>Engineering Science</strong> program. My dream is to work in the aerospace industry, something I have been deeply passionate about for a long while.
+            I have many different hobbies such as sketching, blender modelling, and skating. But most importantly, I love to learn and I strive to become the best version of myself.
+        </p>
+        <p>
+            I created this website to show you a deep dive into who I am as a person. Over here, I will update on complete projects as well as creating blogs that show progressions I make. My goal is to share my mistakes, procceses, and findings with everyone so that we can all learn together.
         </p>
     </section>
 
