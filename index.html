@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Portfolio | Jincheng</title>
+    <link rel="icon" type="image/png" href="icon.png">
     <style>
         :root {
             --bg: #ffffff;
@@ -23,7 +24,7 @@
             background: var(--bg);
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem 2rem 2rem;
+            padding: 60px 2rem 2rem 2rem;
         }
 
         
@@ -44,32 +45,35 @@
             background: var(--bg);
             z-index: 10;
             **/
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
+            /* Reset top margin since body padding handles it now */
+            margin: 0 auto 3rem auto; 
+            
+            /* Stickiness: It should stick to the bottom of the nav bar */
+            
+            top: 60px; 
             z-index: 10;
             
-            /* Background Image setup */
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
                             url('landing_page_banner.png');
             background-size: cover;
-            background-position: center;
+            background-position: bottom;
             background-repeat: no-repeat;
-
-            /* Spacing and Alignment */
-            margin: 0 auto 3rem auto;
-            padding: 3rem 2rem 2rem 2rem; /* More top padding to center text vertically */
+            
+            padding: 3rem 2rem 2rem 2rem;
             text-align: center;
             
-            /* Stretch to edges */
+            /* Keep these to ensure the banner goes to the edge of your 1100px container */
             margin-left: -2rem;
-            width: calc(100% + 4rem);
+            width: 100%
         }
 
         h1 { margin: 0; font-size: 2.5rem; }
         .subtitle { color: var(--secondary); font-size: 1.1rem; }
-
-        section { margin-bottom: 3rem; }
+        
+        section {
+            scroll-margin-top: 80px;
+            margin-bottom: 3rem; 
+        }
         
         h2 {
             border-left: 4px solid var(--accent);
@@ -128,23 +132,144 @@
         }
 
         code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; }
-    </style>
 
-    <style type = "text/css">
-        .landing_banner {
-            width: 100%;
-            margin-top:0;
-            height: 100%;
-            object-fit: cover;
+        /* Sidebar Container */
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            z-index: 100; /* Must be higher than your sections' z-index */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .container{
+        .sidebar-title {
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            display: block;
+        }
+
+        /* Interaction: Similar to your "sliding header" logic */
+        .sidebar a:hover {
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+        /* Hide sidebar on mobile to prevent overlap */
+        @media (max-width: 1400px) {
+            .sidebar {
+                display: none;
+            }
+        }
+
+        /* Static Top Bar Styling */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 300 px;
+            height: 60px;
+
+            /* VERY LIGHT BLUE TINT (90% transparency) */
+            background: rgba(224, 242, 254, 0.9);
+            
+            backdrop-filter: blur(10px); /* Modern frosted effect */
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 2000; /* Stays above everything else */
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Adjusting the Hero/Banner Section */
+        #hero {
+            margin-top: 60px; /* Offset for the fixed top bar */
+            position: sticky;
+            top: 60px;
+            z-index: 10;
+            background: var(--bg);
+        }
+
+        .hero-text {
+            text-align: center;
+            padding: 2rem 0;
         }
     </style>
+
 </head>
 <body>
+    <nav class="sidebar">
+    <div class="sidebar-title">Navigation</div>
+    <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blogs">Blogs</a></li>
+    </ul>
+    </nav>
+
+    <nav class="top-bar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Jincheng</a>
+            <div class="nav-links">
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blogs</a>
+            </div>
+        </div>
+    </nav>
 
     <header>
 
@@ -175,7 +300,13 @@
         <h2>About Me</h2>
         <p>
             Hello! My name is Jincheng and I am currently a first year student at the University of Toronto in the <strong>Engineering Science</strong> program. My dream is to work in the aerospace industry, something I have been deeply passionate about for a long while.
-            I have many different hobbies such as sketching, blender modelling, and skating. But most importantly, I love to learn and I strive to become the best version of myself.
+        </p>
+        <p>
+            Throuhgout high school, I dedicated myself into understanding mathematics and physics.
+            I have also won multple awards as well as becoming #1 in my school in various competitions including the AMC 12, AIME, Euclid, and many more. 
+        </p>
+        <p>
+            Outside of STEM, I also have many different hobbies such as sketching, blender modelling, and figure skating. But most importantly, I love to learn and I strive to become the best version of myself.
         </p>
         <p>
             I created this website to show you a deep dive into who I am as a person. Over here, I will update on complete projects as well as creating blogs that show progressions I make. My goal is to share my mistakes, procceses, and findings with everyone so that we can all learn together.
